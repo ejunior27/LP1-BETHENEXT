@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LP1.Aula6.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace LP1.Aula6
 {
     public class TratamentoErros
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             //Tratamento de erros
             //Try/Catch/Finally
@@ -22,25 +23,30 @@ namespace LP1.Aula6
                 var valor = Console.ReadLine();
                 int numero = Convert.ToInt32(valor);
                 int resultado = 100 / numero;                
-                int soma = numero + 5;                
+                int soma = numero + 5;
+                
+                throw new MeuErroException("Explodiu meu erro");
 
                 Console.WriteLine(resultado);
             }
-            catch(DivideByZeroException ex)
+            catch (DivideByZeroException ex)
             {
                 //linha de código que trata o erro
-                
                 Console.WriteLine($"Operação falhou. {ex.Message}.");
                 //return 0;
             }
-            catch(FormatException)
+            catch (FormatException)
             {
-                Console.WriteLine("Operação falhou. Número inválido.");
+                Console.WriteLine("Operação falhou. Número inválido.");                
             }
-            catch (Exception ex)
+            catch (MeuErroException)
             {
-                Console.WriteLine($"Operação falhou. {ex.Message}.");
-            }                      
+                Console.WriteLine("Operação falhou. Meu erro estourou.");                
+            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Operação falhou. {ex.Message}.");
+            //}
         }
     }
 }

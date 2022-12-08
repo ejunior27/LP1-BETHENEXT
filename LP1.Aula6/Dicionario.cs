@@ -51,6 +51,8 @@ namespace LP1.Aula6
 
             string comando = Console.ReadLine();
 
+            //string s = "aaa,bbb,ccc";           
+
             string[] comandos = comando.Split(" ");
 
             bool chaveEncontrada;
